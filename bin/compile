@@ -54,8 +54,8 @@ git fetch --depth 1 origin -a > /dev/null
 rm -f .gitignore README.md
 git pull origin master
 git checkout master
-rm src/tango-react-base
-cp tango-react-base src/
+rm -f -r src/tango-react-base
+cp -r tango-react-base src/
 echo "-----> Fetched shallow history from $GIT_REPO_URL"
 
 # initialize all the submodules
