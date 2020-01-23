@@ -33,7 +33,7 @@ git init -q
 # echo "src/*" > .git/info/sparse-checkout
 
 # add the repo as a remote and fetch the repo's history
-git remote add origin "$GIT_REPO_URL"
+# git remote add origin "$GIT_REPO_URL"
 
 # install the ssh key
 mkdir -p ~/.ssh
@@ -41,6 +41,8 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2> /dev/null
 cp "$ENV_DIR/GIT_SSH_KEY" ~/.ssh/id_rsa
 echo >> ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
+
+git clone "$GIT_REPO_URL"
 
 # ignore/hide ssh warnings
 echo "Host *" >> ~/.ssh/config
@@ -50,11 +52,8 @@ echo "   LogLevel ERROR" >> ~/.ssh/config
 echo "-----> Installed SSH key from GIT_SSH_KEY"
 
 # checkout the revision that's being deployed
-git fetch --depth 1 origin -a > /dev/null
 rm -f .gitignore README.md
 ls src/tango-react-base
-git pull origin master
-git checkout master
 rm -f -r src/tango-react-base
 cp -r tango-react-base src/
 ls src/tango-react-base/
@@ -63,6 +62,6 @@ ls tango-react-base/components
 echo "-----> Fetched shallow history from $GIT_REPO_URL"
 
 # initialize all the submodules
-git submodule -q update --init --recursive
-echo "-----> Checked out all submodules"
-git submodule status | sed 's/^/       * /'
+# git submodule -q update --init --recursive
+# echo "-----> Checked out all submodules"
+# git submodule status | sed 's/^/       * /'
