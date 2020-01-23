@@ -42,6 +42,7 @@ cp "$ENV_DIR/GIT_SSH_KEY" ~/.ssh/id_rsa
 echo >> ~/.ssh/id_rsa
 chmod 600 ~/.ssh/id_rsa
 
+cd src
 git clone "$GIT_REPO_URL"
 
 # ignore/hide ssh warnings
@@ -52,12 +53,12 @@ echo "   LogLevel ERROR" >> ~/.ssh/config
 echo "-----> Installed SSH key from GIT_SSH_KEY"
 
 # checkout the revision that's being deployed
-rm -f .gitignore README.md
-ls src/tango-react-base
-rm -f -r src/tango-react-base
-cp -r tango-react-base src/
-ls src/tango-react-base/
-ls src/tango-react-base/components
+rm -f ../.gitignore README.md
+#ls src/tango-react-base
+#rm -f -r src/tango-react-base
+#cp -r tango-react-base src/
+#ls src/tango-react-base/
+#ls src/tango-react-base/components
 ls tango-react-base/components
 echo "-----> Fetched shallow history from $GIT_REPO_URL"
 
