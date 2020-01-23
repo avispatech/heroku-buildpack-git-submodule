@@ -59,6 +59,7 @@ rm -f -r src/tango-react-base
 cp -r tango-react-base src/
 ls src/tango-react-base/
 ls src/tango-react-base/components
+ls tango-react-base/components
 echo "-----> Fetched shallow history from $GIT_REPO_URL"
 
 # initialize all the submodules
